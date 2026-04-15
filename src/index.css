@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 200 80% 94%;
+    --foreground: 220 40% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 20%;
+
+    --primary: 200 90% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 100% 55%;
+    --secondary-foreground: 220 40% 20%;
+
+    --muted: 200 30% 90%;
+    --muted-foreground: 220 20% 50%;
+
+    --accent: 350 85% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 200 40% 85%;
+    --input: 200 40% 85%;
+    --ring: 200 90% 50%;
+
+    --radius: 1rem;
+
+    /* Pocoyo palette */
+    --pocoyo-blue: 200 90% 50%;
+    --pocoyo-red: 0 85% 55%;
+    --pocoyo-yellow: 45 100% 55%;
+    --pocoyo-green: 140 70% 45%;
+    --pocoyo-pink: 330 80% 65%;
+    --pocoyo-orange: 25 95% 55%;
+    --pocoyo-sky: 200 80% 94%;
+
+    --font-display: 'Baloo 2', cursive;
+    --font-body: 'Quicksand', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(3deg); }
+  66% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 1.5s ease-in-out infinite;
+}
+
+.animate-pop {
+  animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
