@@ -58,15 +58,18 @@ const RSVPSection = () => {
           <motion.div className="space-y-6">
             <h2 className="text-2xl font-bold">
               🎂 ¿Vienes a la fiesta?
+              <p className="text-pocoyo-blue/80 font-body text-lg mt-2">
+                ¡Emilio te espera con muchas ganas!
+              </p>
             </h2>
 
-            <input
-              type="text"
-              placeholder="Tu nombre"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full px-5 py-3 rounded-full border text-center"
-            />
+           <input
+             type="text"
+             placeholder="Tu nombre"
+             value={name}
+             onChange={(e) => setName(e.target.value)}
+             className="w-full px-6 py-4 rounded-full border-2 border-pocoyo-blue bg-pocoyo-blue/10 text-gray-700 font-body text-center text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pocoyo-blue/40 transition"
+           />
 
             <motion.button
               className="bg-pocoyo-blue text-white font-display font-bold text-xl px-12 py-5 rounded-full shadow-2xl hover:shadow-cyan-400/50"
