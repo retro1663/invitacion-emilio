@@ -69,9 +69,13 @@ const RSVPSection = () => {
             />
 
             <motion.button
-              className="bg-pocoyo-blue text-white font-bold text-xl px-10 py-4 rounded-full shadow-xl disabled:opacity-50 transition-all"
-              whileHover={{ scale: 1.08, boxShadow: "0 20px 40px -10px rgba(14, 165, 233, 0.4)" }}
-              whileTap={{ scale: 0.92 }}
+              className="bg-pocoyo-blue text-white font-display font-bold text-xl px-12 py-5 rounded-full shadow-2xl hover:shadow-cyan-400/50"
+              whileHover={{
+                scale: 1.1,
+                boxShadow: "0 25px 50px -12px rgba(14, 165, 233, 0.5)"
+              }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 300 }}
               onClick={handleConfirm}
               disabled={!name.trim() || loading}
             >
