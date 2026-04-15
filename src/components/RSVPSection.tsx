@@ -68,12 +68,15 @@ const RSVPSection = () => {
               className="w-full px-5 py-3 rounded-full border text-center"
             />
 
-            <button
+            <motion.button
+              className="bg-pocoyo-blue text-white font-bold text-xl px-10 py-4 rounded-full shadow-xl disabled:opacity-50 transition-all"
+              whileHover={{ scale: 1.08, boxShadow: "0 20px 40px -10px rgba(14, 165, 233, 0.4)" }}
+              whileTap={{ scale: 0.92 }}
               onClick={handleConfirm}
               disabled={!name.trim() || loading}
             >
               {loading ? "Enviando..." : "¡Sí, voy! 🎉"}
-            </button>
+            </motion.button>
           </motion.div>
         ) : (
           <div>
