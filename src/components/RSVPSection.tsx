@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
-import { supabase } from "@/integrations/supabase/client";
+
+import { db } from "@/firebase";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  orderBy,
+  serverTimestamp,
+} from "firebase/firestore";
 
 const RSVPSection = () => {
   const [step, setStep] = useState<"form" | "confirmed">("form");
@@ -9,23 +18,33 @@ const RSVPSection = () => {
   const [guests, setGuests] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
+  // 🔥 Obtener invitados desde Firebase
   useEffect(() => {
     const fetchGuests = async () => {
-      const { data } = await supabase
-        .from("rsvps")
-        .select("guest_name")
-        .order("created_at", { ascending: true });
-      if (data) setGuests(data.map((r) => r.guest_name));
+      const q = query(collection(db, "rsvps"), orderBy("createdAt"));
+      const snapshot = await getDocs(q);
+
+      const list = snapshot.docs.map((doc) => doc.data().guest_name);
+      setGuests(list);
     };
+
     fetchGuests();
   }, [step]);
 
+  // 🔥 Guardar en Firebase
   const handleConfirm = async () => {
     if (!name.trim()) return;
+
     setLoading(true);
-    await supabase.from("rsvps").insert({ guest_name: name.trim() });
+
+    await addDoc(collection(db, "rsvps"), {
+      guest_name: name.trim(),
+      createdAt: serverTimestamp(),
+    });
+
     setLoading(false);
     setStep("confirmed");
+
     confetti({
       particleCount: 200,
       spread: 100,
@@ -47,9 +66,11 @@ const RSVPSection = () => {
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground">
               🎂 ¿Vienes a la fiesta?
             </h2>
+
             <p className="text-muted-foreground font-body">
               ¡Emilio te espera con muchas ganas!
             </p>
+
             <input
               type="text"
               placeholder="Tu nombre"
@@ -58,9 +79,14 @@ const RSVPSection = () => {
               className="w-full px-5 py-3 rounded-full border-2 border-pocoyo-blue/30 bg-background text-foreground font-body text-center text-lg focus:outline-none focus:border-pocoyo-blue transition-colors"
               onKeyDown={(e) => e.key === "Enter" && handleConfirm()}
             />
+
             <motion.button
               className="bg-pocoyo-blue text-primary-foreground font-display font-bold text-xl px-10 py-4 rounded-full shadow-xl disabled:opacity-50"
-              whileHover={{ scale: 1.08, boxShadow: "0 20px 40px -10px rgba(14, 165, 233, 0.4)" }}
+              whileHover={{
+                scale: 1.08,
+                boxShadow:
+                  "0 20px 40px -10px rgba(14, 165, 233, 0.4)",
+              }}
               whileTap={{ scale: 0.92 }}
               onClick={handleConfirm}
               disabled={!name.trim() || loading}
@@ -82,19 +108,23 @@ const RSVPSection = () => {
             >
               🥳
             </motion.span>
+
             <h2 className="text-3xl font-display font-extrabold text-pocoyo-blue">
               ¡Genial, {name}!
             </h2>
+
             <p className="text-lg font-body text-foreground">
-              ¡Te esperamos el <strong>29 de Abril</strong> a las <strong>6:30 PM</strong>!
+              ¡Te esperamos el <strong>29 de Abril</strong> a las{" "}
+              <strong>6:30 PM</strong>!
             </p>
+
             <p className="text-muted-foreground font-body text-sm">
               Emilio está muy feliz de que vengas 💙
             </p>
           </motion.div>
         )}
 
-        {/* Guest list */}
+        {/* Lista de invitados */}
         {guests.length > 0 && (
           <motion.div
             className="mt-12"
@@ -105,6 +135,7 @@ const RSVPSection = () => {
             <h3 className="text-lg font-display font-bold text-foreground mb-3">
               🎈 ¡Ya confirmaron {guests.length}!
             </h3>
+
             <div className="flex flex-wrap justify-center gap-2">
               {guests.map((g, i) => (
                 <motion.span
