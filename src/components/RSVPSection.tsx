@@ -68,7 +68,7 @@ const RSVPSection = () => {
              placeholder="Tu nombre"
              value={name}
              onChange={(e) => setName(e.target.value)}
-             className="w-full px-6 py-4 rounded-full border-2 border-pocoyo-blue bg-pocoyo-blue/10 text-gray-700 font-body text-center text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pocoyo-blue/40 transition"
+             className="w-full px-6 py-4 rounded-full border-2 border-pocoyo-blue bg-pocoyo-blue/20 text-gray-700 font-body text-center text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pocoyo-blue/40 transition"
            />
 
             <motion.button
