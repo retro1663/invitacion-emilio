@@ -100,7 +100,7 @@ const RSVPSection = () => {
             {/* Fecha */}
             <p className="text-gray-700 mb-2">
               ¡Te esperamos el <span className="font-semibold">29 de Abril</span> a las{" "}
-              <span className="font-semibold">5:00 PM</span>!
+              <span className="font-semibold">6:30 PM</span>!
             </p>
 
             {/* Mensaje */}
