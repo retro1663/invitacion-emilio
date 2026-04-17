@@ -81,8 +81,8 @@ const InteractiveCharacters = () => {
         transition={{ type: "spring", delay: 0.3 }}
       >
         <img
-          src={pocoyoPato}
-          alt="Pocoyo y Pato"
+          src="/pocoyo.gif"
+          alt="Pocoyo animado"
           className="w-48 sm:w-64 drop-shadow-lg"
         />
       </motion.div>
