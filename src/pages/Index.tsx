@@ -14,11 +14,11 @@ const Index = () => {
       <HeroSection />
 
       {/* 👇 IMAGEN DEL NIÑO CON ANIMACIÓN */}
-      <div className="flex justify-center my-8">
+      <div className="flex justify-center my-18">
         <motion.img
           src="/emilio.png"
           alt="Emilio"
-          className="w-32 sm:w-40 md:w-48 drop-shadow-xl"
+          className="w-56 sm:w-64 md:w-72 drop-shadow-xl"
           animate={{ y: [0, -10, 0] }}
           transition={{
             duration: 2,
