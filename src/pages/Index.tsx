@@ -18,7 +18,7 @@ const Index = () => {
         <motion.img
           src="/emilio.png"
           alt="Emilio"
-          className="w-60 sm:w-70 md:w-76 drop-shadow-xl"
+          className="w-54 sm:w-64 md:w-72 drop-shadow-xl"
           animate={{ y: [0, -10, 0] }}
           transition={{
             duration: 2,
