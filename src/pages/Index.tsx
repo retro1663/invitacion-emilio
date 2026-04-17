@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"; // 👈 AGREGA ESTO
 import FloatingShapes from "@/components/FloatingShapes";
 import HeroSection from "@/components/HeroSection";
 import CountdownTimer from "@/components/CountdownTimer";
@@ -12,12 +13,18 @@ const Index = () => {
       <FloatingShapes />
       <HeroSection />
 
-      {/* 👇 IMAGEN DEL NIÑO */}
+      {/* 👇 IMAGEN DEL NIÑO CON ANIMACIÓN */}
       <div className="flex justify-center my-8">
-        <img
+        <motion.img
           src="/emilio.png"
           alt="Emilio"
           className="w-32 sm:w-40 md:w-48 drop-shadow-xl"
+          animate={{ y: [0, -10, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
       </div>
 
