@@ -11,6 +11,16 @@ const Index = () => {
     <div className="relative min-h-screen overflow-hidden">
       <FloatingShapes />
       <HeroSection />
+
+      {/* 👇 IMAGEN DEL NIÑO */}
+      <div className="flex justify-center my-8">
+        <img
+          src="/emilio.png"
+          alt="Emilio"
+          className="w-32 sm:w-40 md:w-48 drop-shadow-xl"
+        />
+      </div>
+
       <CountdownTimer />
       <InteractiveCharacters />
       <EventDetails />
