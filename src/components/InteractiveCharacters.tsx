@@ -83,7 +83,7 @@ const InteractiveCharacters = () => {
         <img
           src="/pocoyo.gif"
           alt="Pocoyo animado"
-          className="w-48 sm:w-64 drop-shadow-lg"
+          className="w-72 sm:w-96 md:w-[28rem] drop-shadow-lg"
         />
       </motion.div>
     </section>
