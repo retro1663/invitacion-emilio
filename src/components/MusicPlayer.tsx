@@ -5,6 +5,7 @@ let audio: HTMLAudioElement | null = null; // 🔥 GLOBAL
 
 const MusicPlayer = () => {
   const [playing, setPlaying] = useState(false);
+  const [started, setStarted] = useState(false); // 👈 nuevo
 
   useEffect(() => {
     if (!audio) {
@@ -13,24 +14,27 @@ const MusicPlayer = () => {
       audio.volume = 0.4;
     }
 
-    // 🔥 PRIMER CLICK EN TODA LA PANTALLA
-    const handleFirstClick = () => {
-      if (audio && audio.paused) {
+    // 🔥 FUNCIÓN PARA INICIAR
+    const startMusic = () => {
+      if (audio && audio.paused && !started) {
         audio.play();
+        setStarted(true);
       }
-      window.removeEventListener("click", handleFirstClick);
     };
 
-    window.addEventListener("click", handleFirstClick);
+    // 🔥 EVENTOS: CLICK + SCROLL
+    window.addEventListener("click", startMusic);
+    window.addEventListener("scroll", startMusic);
 
     // 🔥 sincronizar estado
     audio.onplay = () => setPlaying(true);
     audio.onpause = () => setPlaying(false);
 
     return () => {
-      window.removeEventListener("click", handleFirstClick);
+      window.removeEventListener("click", startMusic);
+      window.removeEventListener("scroll", startMusic);
     };
-  }, []);
+  }, [started]);
 
   const toggle = () => {
     if (!audio) return;
