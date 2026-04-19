@@ -17,14 +17,15 @@ const MusicPlayer = () => {
     // 🔥 FUNCIÓN PARA INICIAR
     const startMusic = () => {
       if (audio && audio.paused && !started) {
-        audio.play();
+        audio.play().catch(() => {}); // 👈 evita error en móviles
         setStarted(true);
       }
     };
 
-    // 🔥 EVENTOS: CLICK + SCROLL
+    // 🔥 EVENTOS: CLICK + SCROLL + TOUCH (MÓVIL)
     window.addEventListener("click", startMusic);
     window.addEventListener("scroll", startMusic);
+    window.addEventListener("touchstart", startMusic); // 👈 ESTE ES EL CLAVE
 
     // 🔥 sincronizar estado
     audio.onplay = () => setPlaying(true);
@@ -33,6 +34,7 @@ const MusicPlayer = () => {
     return () => {
       window.removeEventListener("click", startMusic);
       window.removeEventListener("scroll", startMusic);
+      window.removeEventListener("touchstart", startMusic);
     };
   }, [started]);
 
@@ -40,7 +42,7 @@ const MusicPlayer = () => {
     if (!audio) return;
 
     if (audio.paused) {
-      audio.play();
+      audio.play().catch(() => {});
     } else {
       audio.pause();
     }
