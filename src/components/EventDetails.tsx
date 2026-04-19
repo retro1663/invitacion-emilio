@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const details = [
-  { emoji: "📅", label: "Fecha", value: "29 de Abril, 2026", color: "border-pocoyo-blue" },
-  { emoji: "🕐", label: "Hora", value: "6:30 PM", color: "border-pocoyo-red" },
-  { emoji: "📍", label: "Lugar", value: "¡Panamericana Sur km 446!", color: "border-pocoyo-yellow" },
+  { emoji: "📅", label: "Fecha", value: "30 de Abril, 2026", color: "border-pocoyo-blue" },
+  { emoji: "🕐", label: "Hora", value: "7:00 PM", color: "border-pocoyo-red" },
+  { emoji: "📍", label: "Lugar", value: "Restaurante Señora Bella (Frente a Nascamotors)", color: "border-pocoyo-yellow" },
   { emoji: "🎨", label: "Temática", value: "¡Pocoyo!", color: "border-pocoyo-green" },
   { emoji: "🎁", label: "Regalos", value: "¿No sabes qué regalarme?", color: "border-pocoyo-pink" },
 ];
@@ -86,7 +86,8 @@ const EventDetails = () => {
                         <li>🧩 Masitas moldeables</li>
                         <li>🚗 Pistas de autos</li>
                         <li>👕 Ropa talla 6</li>
-                        <li>🍄 Mario Bros</li>
+                        <li>🧸 Juguetes de Pocoyo</li>
+                        <li>🎲 Juegos didácticos</li>
                       </ul>
                     )}
                   </>
